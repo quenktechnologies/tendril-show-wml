@@ -1,0 +1,22 @@
+{
+  "name": "@quenk/tendril-show-wml",
+  "version": "0.0.5",
+  "description": "Provides a tendril show function for WML views.",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@quenk/noni": "^1.40.14",
+    "@quenk/tendril": "^0.42.9",
+    "@quenk/wml": "^2.7.0"
+  },
+  "devDependencies": {
+    "@types/express-session": "^1.17.3",
+    "@types/morgan": "^1.9.2",
+    "@types/node": "^14.14.22",
+    "@types/uuid": "^8.3.0",
+    "typescript": "^4.2.4"
+  }
+}
