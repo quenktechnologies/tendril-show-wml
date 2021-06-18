@@ -1,6 +1,6 @@
 {
   "name": "@quenk/tendril-show-wml",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Provides a tendril show function for WML views.",
   "main": "lib/index.js",
   "files": [
