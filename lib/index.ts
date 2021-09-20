@@ -11,10 +11,11 @@ import {
     pure
 } from '@quenk/noni/lib/control/monad/future';
 import { interp } from '@quenk/noni/lib/platform/node/module/pointer';
+import { liftF } from '@quenk/noni/lib/control/monad/free';
 
 import { Action, Api, Context } from '@quenk/tendril/lib/app/api';
 import { Content } from '@quenk/tendril/lib/app/show';
-import { liftF } from '@quenk/noni/lib/control/monad/free';
+import { PRS_VIEW_CSRF_TOKEN } from '@quenk/tendril/lib/app/boot/stage/csrf-token';
 
 /**
  * @private
@@ -34,8 +35,12 @@ export class Render<A> extends Api<A> {
 
     exec(ctx: Context<A>): Future<A> {
 
-        let { response } = ctx;
+        let { response, request } = ctx;
         let { view, status, next } = this;
+
+        (<Type>view).csrfToken =
+            (<Type>view).csrfToken ||
+            request.prs.getOrElse(PRS_VIEW_CSRF_TOKEN, '');
 
         response.set(headers.CONTENT_TYPE, 'text/html');
         response.status(status);
