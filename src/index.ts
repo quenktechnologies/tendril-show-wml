@@ -2,7 +2,7 @@ import * as headers from '@quenk/tendril/lib/net/http/headers';
 
 import { View } from '@quenk/wml';
 
-import { Type } from '@quenk/noni/lib/data/type';
+import { Type  } from '@quenk/noni/lib/data/type';
 import {
     Future,
     doFuture,
@@ -15,7 +15,6 @@ import { liftF } from '@quenk/noni/lib/control/monad/free';
 
 import { Action, Api, Context } from '@quenk/tendril/lib/app/api';
 import { Content } from '@quenk/tendril/lib/app/show';
-import { PRS_VIEW_CSRF_TOKEN } from '@quenk/tendril/lib/app/boot/stage/csrf-token';
 
 /**
  * @private
@@ -35,12 +34,8 @@ export class Render<A> extends Api<A> {
 
     exec(ctx: Context<A>): Future<A> {
 
-        let { response, request } = ctx;
+        let { response  } = ctx;
         let { view, status, next } = this;
-
-        (<Type>view).csrfToken =
-            (<Type>view).csrfToken ||
-            request.prs.getOrElse(PRS_VIEW_CSRF_TOKEN, '');
 
         response.set(headers.CONTENT_TYPE, 'text/html');
         response.status(status);
