@@ -9,7 +9,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@quenk/noni": "^1.40.14",
-    "@quenk/tendril": "^0.42.9",
+    "@quenk/tendril": "^0.43.2",
     "@quenk/wml": "^2.8.1"
   },
   "devDependencies": {
